@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import Provider from "@/components/Provider";
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -8,16 +9,24 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "NEXT13",
-  description: "learning next 13",
+  title: "GithView",
+  description: "sync with your github account easily using GithView",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
-        <Navbar/>
-        <main>{children}</main>
+      <body className={poppins}>
+        <Provider>
+          <div className="main">
+            <div className="gradient" />
+          </div>
+
+          <main className="relative">
+            <Navbar />
+            {children}
+          </main>
+        </Provider>
       </body>
     </html>
   );

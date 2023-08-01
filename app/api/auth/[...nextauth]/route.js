@@ -1,6 +1,6 @@
 import User from "@/models/user";
 import { connectToDB } from "@/utils/database";
-import NextAuth from "next-auth/next";
+import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 
 const handler = NextAuth({
@@ -20,14 +20,13 @@ const handler = NextAuth({
     async signIn({ account, profile, user, credentials }) {
       try {
         await connectToDB();
-
         const userExists = await User.findOne({ email: profile.email });
 
         if (!userExists) {
           await User.create({
             email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
-            image: profile.picture,
+            username: profile.login,
+            image: profile.avatar_url,
           });
         }
 

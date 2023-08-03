@@ -11,7 +11,6 @@ const Navbar = () => {
   const [providers, setProviders] = useState();
   const [onTopPage, setOnTopPage] = useState(true);
   const [toggleDropdown, setToggleDropdown] = useState(false);
-console.log(session);
   useEffect(() => {
     (async () => {
       const res = await getProviders();
@@ -43,7 +42,7 @@ console.log(session);
             <button type="button" onClick={signOut} className="outline_btn">
               Sign Out
             </button>
-            <Link href={`/profile/${session?.user.email}`}>
+            <Link href={`/profile?email=${session?.user.email}`}>
               <Image
                 src={session?.user.image}
                 width={30}
@@ -87,7 +86,7 @@ console.log(session);
             {toggleDropdown && (
               <div className="dropdown">
                 <Link
-                  href={`/profile/${session?.user.email}`}
+                  href={`/profile?email=${session?.user.email}`}
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
                 >

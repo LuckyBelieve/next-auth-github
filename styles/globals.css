@@ -66,6 +66,12 @@
     padding: 0;
   }
 }
+.head_text {
+  @apply mt-5 font-extrabold text-black text-center;
+}
+.outline_btn {
+  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm flex items-center justify-center;
+}
 .dropdown {
   @apply absolute right-0 top-10 mt-3 p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-center;
 }
@@ -77,4 +83,11 @@
 }
 .head_text {
   @apply mt-5 text-xl font-extrabold leading-[1] text-black sm:text-2xl w-[50%];
+}
+.loadingPage::before{
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: orangered;
 }

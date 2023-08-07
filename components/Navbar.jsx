@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { FaBars } from "react-icons/fa";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 const Navbar = () => {
   const { data: session } = useSession();
@@ -23,7 +22,7 @@ const Navbar = () => {
     }
   }, []);
   return (
-    <nav className="py-5 px-8 border-b flex justify-between items-center z-10">
+    <nav className={` py-5 px-8 border-b flex justify-between items-center z-10 sticky top-0`}>
       <div>
         <Link href={"/"} className="flex items-center gap-2">
           <Image
@@ -42,6 +41,7 @@ const Navbar = () => {
             <button type="button" onClick={signOut} className="outline_btn">
               Sign Out
             </button>
+            <Link href={"/repositories"} className="outline_btn">your repositories</Link>
             <Link href={`/profile?email=${session?.user.email}`}>
               <Image
                 src={session?.user.image}
@@ -92,6 +92,7 @@ const Navbar = () => {
                 >
                   My Profile
                 </Link>
+                <Link href={"/repositories"} className="outline_btn">your repositories</Link>
                 <button
                   type="button"
                   onClick={() => {
